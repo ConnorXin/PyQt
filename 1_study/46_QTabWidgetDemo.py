@@ -28,9 +28,47 @@ class QTabWidgetDemo(QTabWidget):
         self.tab3 = QWidget()
 
         # 添加 Tab
-        self.addTab(self.tab1)
-        self.addTab(self.tab2)
-        self.addTab(self.tab3)
+        # 为被一个 tab 写一个方法
+        self.addTab(self.tab1, 'tab1')
+        self.addTab(self.tab2, 'tab2')
+        self.addTab(self.tab3, 'tab3')
+
+        self.lay_tab1()
+        self.lay_tab2()
+        self.lay_tab3()
+
+    def lay_tab1(self):
+
+        layout = QFormLayout()
+        layout.addRow('name', QLineEdit())
+        layout.addRow('address', QLineEdit())
+        # 修改 tab title
+        self.setTabText(0, 'login')
+
+        self.tab1.setLayout(layout)
+
+
+    def lay_tab2(self):
+
+        layout = QFormLayout()
+        sex = QHBoxLayout()
+        sex.addWidget(QRadioButton('male'))
+        sex.addWidget(QRadioButton('female'))
+        layout.addRow(QLabel('sex'), sex)
+        layout.addRow('birthday', QLineEdit())
+        self.setTabText(1, 'user_info')
+        self.tab2.setLayout(layout)
+
+
+    def lay_tab3(self):
+
+        layout = QHBoxLayout()
+        layout.addWidget(QLabel('subject'))
+        layout.addWidget(QCheckBox('physics'))
+        layout.addWidget(QCheckBox('math_plus'))
+        self.setTabText(2, 'extent_eduate')
+        self.tab3.setLayout(layout)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
