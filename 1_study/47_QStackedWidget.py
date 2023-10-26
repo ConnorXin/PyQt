@@ -64,6 +64,7 @@ class StackedDemo(QWidget):
         layout.addRow('birthday', QLineEdit())
         self.stack2.setLayout(layout)
 
+
     def lay_stack3(self):
         layout = QHBoxLayout()
         layout.addWidget(QLabel('subject'))
