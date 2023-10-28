@@ -51,6 +51,7 @@ class MultiWindowsDemo(QMainWindow):
             self.mdi.addSubWindow(sub)
             # 显示子窗口
             sub.show()
+            print(MultiWindowsDemo.count)
         elif q.text() == 'cascade':
             self.mdi.cascadeSubWindows()
         elif q.text() == 'Tiled':
