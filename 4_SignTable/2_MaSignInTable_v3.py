@@ -95,6 +95,16 @@ def write(write_object, df, sheet_name, dept, row):
         row = values[rowlen]
         for collen in range(len(work_columns)):
             worksheet.write(rowlen + 3, collen, row[collen], content_style)
+    # 设置行高列宽
+    worksheet.col(0).width = 6 * 256
+    worksheet.col(1).width = 14 * 256
+    for i in range(2, 7):
+        worksheet.col(i).width = 12 * 256
+    worksheet.row(0).height_mismatch = True
+    worksheet.row(0).height = 60 * 9
+    for i in range(1, len(values) + 4):
+        worksheet.row(i).height_mismatch = True
+        worksheet.row(i).height = 60 * 7
 
     return write_object
 

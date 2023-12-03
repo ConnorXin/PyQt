@@ -13,7 +13,14 @@ from PyQt5.QtWidgets import QApplication, QWidget
 
 class MathMajorCourseSignTable(QWidget):
 
-    pass
+    def __init__(self):
+
+        super(MathMajorCourseSignTable, self).__init__()
+        self.setWindowTitle('专业课签到表')
+        self.resize(500, 300)
+
+
+
 
 
 if __name__ == '__main__':
