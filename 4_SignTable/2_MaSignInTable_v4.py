@@ -158,10 +158,16 @@ class SignTable(QWidget):
         path = self.path
         # print(path)
         # file_stu = [dir for dir in os.listdir(path) if '上课名单' in dir][0]
-        df_stu = read_excel(path, dtype=str)
+        try:
+            df_stu = read_excel(path, dtype=str)
+        except Exception as e:
+            reply = QMessageBox.critical(self, 'Error', f'{e}\n请检查文件是否符合')
 
-        df_stu_filter = df_stu.loc[df_stu['课程名称'].isin(['思想道德与法治', '中国近现代史纲要', '习近平新时代中国特色社会主义思想概论', '马克思主义基本原理'])]
-        df_stu_filter = df_stu_filter[['课程名称', '学号', '姓名', '班级', '院系', '修读类别', '教师']]
+        try:
+            df_stu_filter = df_stu.loc[df_stu['课程名称'].isin(['思想道德与法治', '中国近现代史纲要', '习近平新时代中国特色社会主义思想概论', '马克思主义基本原理'])]
+            df_stu_filter = df_stu_filter[['课程名称', '学号', '姓名', '班级', '院系', '修读类别', '教师']]
+        except Exception as e:
+            reply = QMessageBox.critical(self, 'Error', f'{e}\n请检查文件是否符合')
 
         try:
             for course_name, course_data in df_stu_filter.groupby('课程名称'):
