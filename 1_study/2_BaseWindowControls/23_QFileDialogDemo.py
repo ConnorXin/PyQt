@@ -21,6 +21,7 @@ class QFileDialogDemo(QWidget):
 
         super(QFileDialogDemo, self).__init__()
 
+        self.is_folder_mode = True  # 初始状态为选择文件夹模式
         self.initUI()
 
 
@@ -49,6 +50,10 @@ class QFileDialogDemo(QWidget):
         self.contexts = QTextEdit()
         layout.addWidget(self.contexts)
 
+        self.switch_button = QPushButton('选择文件', self)
+        self.switch_button.clicked.connect(self.switch_mode)
+        layout.addWidget(self.switch_button)
+
         self.setLayout(layout)
 
 
@@ -60,6 +65,7 @@ class QFileDialogDemo(QWidget):
         # fname: 返回文件路径
         # _: 是否取消的参数  不想返回即用 _ 表示
         fname, _ = QFileDialog.getOpenFileName(self, '打开文件', './', 'IMG File (*.jpg *.png)')
+        print(fname)
         self.labelIMG.setPixmap(QPixmap(fname))
         self.labelIMG.setAlignment(Qt.AlignCenter)
 

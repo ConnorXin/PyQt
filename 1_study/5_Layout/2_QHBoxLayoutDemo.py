@@ -28,7 +28,11 @@ class QHBoxLayoutDemo(QWidget):
         hbox.addWidget(QPushButton('button_4'))
         hbox.addWidget(QPushButton('button_5'))
 
+        # 设置间距 40
+        hbox.setSpacing(40)
+
         self.setLayout(hbox)
+
 
 if __name__ == '__main__':
 
